@@ -1,4 +1,6 @@
+// Clock.jsx
 import { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Clock() {
   const [isClockedIn, setIsClockedIn] = useState(false);
@@ -23,7 +25,6 @@ export default function Clock() {
           Authorization: `Bearer ${token}`,
         },
       });
-
       const data = await res.json();
       if (res.ok) {
         setIsClockedIn(true);
@@ -48,7 +49,6 @@ export default function Clock() {
           Authorization: `Bearer ${token}`,
         },
       });
-
       const data = await res.json();
       if (res.ok) {
         setIsClockedIn(false);
@@ -63,27 +63,28 @@ export default function Clock() {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/';
-  };
-
   return (
-    <div className="container mt-5 text-center">
+    <div className="container mt-5 text-light bg-dark p-4 rounded" style={{ maxWidth: '600px' }}>
       <h2>ChronosControl Dashboard</h2>
-      <p className="lead">Status: <strong>{isClockedIn ? 'Clocked In' : 'Not Clocked In'}</strong></p>
+      <p>Status: <strong>{isClockedIn ? 'Clocked In' : 'Not Clocked In'}</strong></p>
 
-      {message && <div className="alert alert-info">{message}</div>}
+      {message && <div className="alert alert-info mt-3">{message}</div>}
 
       <button
+        className={`btn ${isClockedIn ? 'btn-danger' : 'btn-success'} w-100 mt-3`}
         onClick={isClockedIn ? handleClockOut : handleClockIn}
         disabled={loading}
-        className={`btn ${isClockedIn ? 'btn-danger' : 'btn-success'} me-2`}
       >
         {loading ? 'Working...' : isClockedIn ? 'Clock Out' : 'Clock In'}
       </button>
 
-      <button onClick={handleLogout} className="btn btn-outline-secondary">
+      <button
+        className="btn btn-secondary w-100 mt-3"
+        onClick={() => {
+          localStorage.removeItem('token');
+          window.location.href = '/';
+        }}
+      >
         Log Out
       </button>
     </div>

@@ -1,4 +1,6 @@
+// Login.jsx
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -31,8 +33,8 @@ export default function Login() {
   };
 
   return (
-    <div className="container mt-5" style={{ maxWidth: '400px' }}>
-      <h2 className="mb-4 text-center">Login</h2>
+    <div className="container mt-5 text-light bg-dark p-4 rounded" style={{ maxWidth: '400px' }}>
+      <h2 className="mb-4">Login</h2>
       <form onSubmit={handleLogin}>
         <div className="mb-3">
           <input
@@ -54,9 +56,7 @@ export default function Login() {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary w-100">
-          Log In
-        </button>
+        <button type="submit" className="btn btn-primary w-100">Log In</button>
         {error && <p className="text-danger mt-3">{error}</p>}
       </form>
     </div>
