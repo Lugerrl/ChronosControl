@@ -7,7 +7,6 @@ export default function Clock() {
 
   const token = localStorage.getItem('token');
 
-  // Redirect if not logged in
   useEffect(() => {
     if (!token) {
       window.location.href = '/';
@@ -64,28 +63,27 @@ export default function Clock() {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
   return (
-    <div style={{ padding: '2rem' }}>
-        <h2>ChronosControl Dashboard</h2>
-        <p>Status: {isClockedIn ? 'Clocked In' : 'Not Clocked In'}</p>
+    <div className="container mt-5 text-center">
+      <h2>ChronosControl Dashboard</h2>
+      <p className="lead">Status: <strong>{isClockedIn ? 'Clocked In' : 'Not Clocked In'}</strong></p>
 
-        {message && (
-            <p style={{ marginTop: '1rem', fontWeight: 'bold' }}>{message}</p>
-        )}
+      {message && <div className="alert alert-info">{message}</div>}
 
-    <button
+      <button
         onClick={isClockedIn ? handleClockOut : handleClockIn}
         disabled={loading}
-        style={{ marginTop: '1rem' }}
-    >
-    {loading ? 'Working...' : isClockedIn ? 'Clock Out' : 'Clock In'}
-</button>
+        className={`btn ${isClockedIn ? 'btn-danger' : 'btn-success'} me-2`}
+      >
+        {loading ? 'Working...' : isClockedIn ? 'Clock Out' : 'Clock In'}
+      </button>
 
-      <br />
-      <button onClick={() => {
-        localStorage.removeItem('token');
-        window.location.href = '/';
-      }}>
+      <button onClick={handleLogout} className="btn btn-outline-secondary">
         Log Out
       </button>
     </div>

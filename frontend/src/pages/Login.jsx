@@ -23,9 +23,7 @@ export default function Login() {
         return;
       }
 
-      // Save token
       localStorage.setItem('token', data.token);
-      // Navigate to clock page
       window.location.href = '/clock';
     } catch (err) {
       setError('Something went wrong.');
@@ -33,25 +31,33 @@ export default function Login() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Login</h2>
+    <div className="container mt-5" style={{ maxWidth: '400px' }}>
+      <h2 className="mb-4 text-center">Login</h2>
       <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        /><br /><br />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        /><br /><br />
-        <button type="submit">Log In</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className="mb-3">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="mb-3">
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary w-100">
+          Log In
+        </button>
+        {error && <p className="text-danger mt-3">{error}</p>}
       </form>
     </div>
   );
