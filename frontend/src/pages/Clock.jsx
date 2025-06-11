@@ -17,7 +17,7 @@ export default function Clock() {
   const handleClockIn = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/time/clock-in', {
+      const res = await fetch('https://clock-backend-ul26.onrender.com/api/time/clock-in', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export default function Clock() {
   const handleClockOut = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://localhost:5000/api/time/clock-out', {
+      const res = await fetch('https://clock-backend-ul26.onrender.com/api/time/clock-out', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
