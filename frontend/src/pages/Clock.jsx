@@ -64,29 +64,31 @@ export default function Clock() {
   };
 
   return (
-    <div className="container mt-5 text-light bg-dark p-4 rounded" style={{ maxWidth: '600px' }}>
-      <h2>ChronosControl Dashboard</h2>
-      <p>Status: <strong>{isClockedIn ? 'Clocked In' : 'Not Clocked In'}</strong></p>
+    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light">
+      <div className="bg-secondary p-4 rounded" style={{ width: '100%', maxWidth: '600px' }}>
+        <h2 className="mb-3 text-center">ChronosControl Dashboard</h2>
+        <p className="text-center">Status: <strong>{isClockedIn ? 'Clocked In' : 'Not Clocked In'}</strong></p>
 
-      {message && <div className="alert alert-info mt-3">{message}</div>}
+        {message && <div className="alert alert-info mt-3">{message}</div>}
 
-      <button
-        className={`btn ${isClockedIn ? 'btn-danger' : 'btn-success'} w-100 mt-3`}
-        onClick={isClockedIn ? handleClockOut : handleClockIn}
-        disabled={loading}
-      >
-        {loading ? 'Working...' : isClockedIn ? 'Clock Out' : 'Clock In'}
-      </button>
+        <button
+          className={`btn ${isClockedIn ? 'btn-danger' : 'btn-success'} w-100 mt-3`}
+          onClick={isClockedIn ? handleClockOut : handleClockIn}
+          disabled={loading}
+        >
+          {loading ? 'Working...' : isClockedIn ? 'Clock Out' : 'Clock In'}
+        </button>
 
-      <button
-        className="btn btn-secondary w-100 mt-3"
-        onClick={() => {
-          localStorage.removeItem('token');
-          window.location.href = '/';
-        }}
-      >
-        Log Out
-      </button>
+        <button
+          className="btn btn-secondary w-100 mt-3"
+          onClick={() => {
+            localStorage.removeItem('token');
+            window.location.href = '/';
+          }}
+        >
+          Log Out
+        </button>
+      </div>
     </div>
   );
 }

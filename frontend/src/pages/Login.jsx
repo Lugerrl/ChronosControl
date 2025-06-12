@@ -33,32 +33,34 @@ export default function Login() {
   };
 
   return (
-    <div className="container mt-5 text-light bg-dark p-4 rounded" style={{ maxWidth: '400px' }}>
-      <h2 className="mb-4">Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <input
-            type="password"
-            className="form-control"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary w-100">Log In</button>
-        {error && <p className="text-danger mt-3">{error}</p>}
-      </form>
+    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light">
+      <div className="bg-secondary p-4 rounded" style={{ width: '100%', maxWidth: '400px' }}>
+        <h2 className="mb-4 text-center">Login</h2>
+        <form onSubmit={handleLogin}>
+          <div className="mb-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary w-100">Log In</button>
+          {error && <p className="text-danger mt-3 text-center">{error}</p>}
+        </form>
+      </div>
     </div>
   );
 }
