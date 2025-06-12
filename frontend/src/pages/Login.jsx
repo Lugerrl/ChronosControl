@@ -1,6 +1,7 @@
 // Login.jsx
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
 export default function Login() {
   const [username, setUsername] = useState('');
@@ -33,9 +34,9 @@ export default function Login() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light">
+    <div className="full-dark-bg d-flex justify-content-center align-items-center">
       <div className="bg-secondary p-4 rounded" style={{ width: '100%', maxWidth: '400px' }}>
-        <h2 className="mb-4 text-center">Login</h2>
+        <h2 className="mb-4 text-center text-light">Login</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-3">
             <input

@@ -1,6 +1,7 @@
 // Clock.jsx
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
 export default function Clock() {
   const [isClockedIn, setIsClockedIn] = useState(false);
@@ -64,8 +65,8 @@ export default function Clock() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark text-light">
-      <div className="bg-secondary p-4 rounded" style={{ width: '100%', maxWidth: '600px' }}>
+    <div className="full-dark-bg d-flex justify-content-center align-items-center">
+      <div className="bg-secondary p-4 rounded text-light" style={{ width: '100%', maxWidth: '600px' }}>
         <h2 className="mb-3 text-center">ChronosControl Dashboard</h2>
         <p className="text-center">Status: <strong>{isClockedIn ? 'Clocked In' : 'Not Clocked In'}</strong></p>
 
