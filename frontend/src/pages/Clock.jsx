@@ -1,7 +1,7 @@
 // Clock.jsx
 import { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles.css';
+import '/src/styles.css';
 
 export default function Clock() {
   const [isClockedIn, setIsClockedIn] = useState(false);

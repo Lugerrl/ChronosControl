@@ -1,7 +1,7 @@
 // Login.jsx
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles.css';
+import '/src/styles.css';
 
 export default function Login() {
   const [username, setUsername] = useState('');
